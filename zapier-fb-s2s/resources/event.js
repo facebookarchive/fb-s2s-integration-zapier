@@ -25,7 +25,7 @@ function setField(targetObject, bundle, fieldName) {
 
 const createEvent = (z, bundle) => {
   let pixelId = bundle.inputData.pixelId;
-  let accessToken = bundle.inputData.accessToken;
+  let accessToken = bundle.authData.accessToken;
 
   let payload = {
     "data": [
@@ -64,9 +64,17 @@ const createEvent = (z, bundle) => {
     method: 'POST',
     url: `https://graph.facebook.com/${API_VERSION}/${pixelId}/events?access_token=${accessToken}`,
     body: payload,
+    headers: {
+      'user-agent': 'zapier-s2s-integration'
+    }
   });
   return responsePromise
-    .then(response => z.JSON.parse(response.content));
+    .then(response => {
+      return {
+        response: z.JSON.parse(response.content),
+        request: payload
+      };
+    });
 };
 
 const allUserDataFields = [
@@ -156,7 +164,6 @@ const allEventDataFields = [
 module.exports = {
   key: 'event',
   noun: 'Event',
-
   create: {
     display: {
       label: 'Send your events',
@@ -169,13 +176,6 @@ module.exports = {
             required: true,
             label: 'Pixel ID',
             helpText: 'Your pixel id'
-        },
-        {
-            key: 'accessToken',
-            required: true,
-            label: 'Access Token',
-            type: 'password',
-            helpText: 'Access Token you generated for your pixel'
         },
         {
             key: 'eventName',

@@ -8,6 +8,21 @@ const App = {
   version: require('./package.json').version,
   platformVersion: require('zapier-platform-core').version,
 
+  authentication: {
+    type: 'custom',
+    test: (z, bundle) => !!bundle.authData.accessToken,
+    fields: [
+      {
+          key: 'accessToken',
+          required: true,
+          label: 'Access Token',
+          type: 'string',
+          helpText: 'Access Token you generated for your pixel, go to [this page](https://developers.facebook.com/docs/marketing-api/facebook-pixel/server-side-api#access-token) for more info.'
+      },
+    ]
+  },
+
+
   // beforeRequest & afterResponse are optional hooks into the provided HTTP client
   beforeRequest: [],
 
