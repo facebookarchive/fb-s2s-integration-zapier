@@ -1,11 +1,11 @@
 {
-  "name": "fb-s2s-integration-zapier ",
+  "name": "fb-s2s-integration-zapier",
   "version": "1.0.0",
   "description": "",
   "repository": "",
   "homepage": "",
-  "author": "",
-  "license": "",
+  "author": "Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved",
+  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "test": "mocha --recursive"

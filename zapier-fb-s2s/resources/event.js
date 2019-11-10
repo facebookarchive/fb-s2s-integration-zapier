@@ -1,4 +1,8 @@
-// create a event
+// Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
+
+// This source code is licensed under the MIT license found in the
+// LICENSE file in the root directory of this source tree.
+
 const API_VERSION = 'v4.0';
 const utf8 = require('utf8');
 const shajs = require('sha.js');
