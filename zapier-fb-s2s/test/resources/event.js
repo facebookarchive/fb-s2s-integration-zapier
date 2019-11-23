@@ -14,11 +14,14 @@ zapier.tools.env.inject();
 
 describe('My App', () => {
   it('should run resources.event', done => {
-    const bundle = { inputData: {
+    const bundle = {
+      authData: {
+        accessToken: '',
+      },
+      inputData: {
       pixelId: '',
-      accessToken: '',
       eventName: 'ViewContent',
-      eventTime: '1571246071',
+      eventTime: '1574532844',
       fn: 'Lia',
       ln: 'Skywalker',
       em: 'lia@dog.com',
@@ -27,8 +30,8 @@ describe('My App', () => {
       ct: 'newyork',
       st: 'ny',
       external_id: '1234567',
-      content_ids: '["123abc"]'
-
+      content_ids: '["123abc"]',
+      userSpecifiedApiVersion: ''
     } };
 
     appTester(App.resources.event.create.operation.perform, bundle)

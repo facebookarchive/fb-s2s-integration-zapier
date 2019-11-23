@@ -30,6 +30,10 @@ function setField(targetObject, bundle, fieldName) {
 const createEvent = (z, bundle) => {
   let pixelId = bundle.inputData.pixelId;
   let accessToken = bundle.authData.accessToken;
+  let apiVersion = API_VERSION;
+  if (bundle.inputData.userSpecifiedApiVersion) {
+    apiVersion = bundle.inputData.userSpecifiedApiVersion;
+  }
 
   let payload = {
     "data": [
@@ -66,7 +70,7 @@ const createEvent = (z, bundle) => {
 
   const responsePromise = z.request({
     method: 'POST',
-    url: `https://graph.facebook.com/${API_VERSION}/${pixelId}/events?access_token=${accessToken}`,
+    url: `https://graph.facebook.com/${apiVersion}/${pixelId}/events?access_token=${accessToken}`,
     body: payload,
     headers: {
       'user-agent': 'zapier-s2s-integration'
@@ -165,6 +169,15 @@ const allEventDataFields = [
   }
 ];
 
+const allAdvancedDataFields = [
+  {
+      key: 'userSpecifiedApiVersion',
+      required: false,
+      label: 'This app uses API version ' + API_VERSION + ', use this field to override API vesrion.',
+      helpText: 'Notice that only latest 2 vesrions are supported. Example v4.0'
+  }
+];
+
 module.exports = {
   key: 'event',
   noun: 'Event',
@@ -211,6 +224,11 @@ module.exports = {
             key: 'eventDataFields',
             label: 'Select event data fields to be sent',
             children: allEventDataFields
+        },
+        {
+            key: 'advancedDataFields',
+            label: 'Select advanced data fields to be sent',
+            children: allAdvancedDataFields
         }
       ],
       perform: createEvent
