@@ -173,8 +173,8 @@ const allAdvancedDataFields = [
   {
       key: 'userSpecifiedApiVersion',
       required: false,
-      label: 'This app uses API version ' + API_VERSION + ', use this field to override API vesrion.',
-      helpText: 'Notice that only latest 2 vesrions are supported. Example v4.0'
+      label: 'This app uses API version ' + API_VERSION + ', use this field to override the API version.',
+      helpText: 'Notice that only the 2 latest versions are supported. Example v4.0'
   }
 ];
 
