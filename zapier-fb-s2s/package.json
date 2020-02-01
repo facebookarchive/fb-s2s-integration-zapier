@@ -17,7 +17,7 @@
   "dependencies": {
     "sha.js": "^2.4.11",
     "utf8": "^3.0.0",
-    "zapier-platform-core": "^8.4.2"
+    "zapier-platform-core": "8.4.2"
   },
   "devDependencies": {
     "mocha": "^5.2.0",
