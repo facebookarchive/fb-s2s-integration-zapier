@@ -21,7 +21,7 @@ describe('My App', () => {
       inputData: {
       pixelId: '',
       eventName: 'ViewContent',
-      eventTime: '1574532844',
+      eventTime: '1580573487',
       fn: 'Lia',
       ln: 'Skywalker',
       em: 'lia@dog.com',
@@ -37,7 +37,7 @@ describe('My App', () => {
     appTester(App.resources.event.create.operation.perform, bundle)
       .then(results => {
         should.exist(results);
-        console.log(results);
+        console.log(JSON.stringify(results, undefined, 2));
         done();
       })
       .catch(done);
